@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Black Jack VIP | Mars Spins</title>
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/blackjack.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar">
+    <div class="nav-left">
+      <a href="principal.html" class="btn-back">← Volver al Lobby</a>
+      <span class="brand-label">Mars Spins &bull; Blackjack VIP</span>
+    </div>
+
+    <div class="nav-right">
+      <div class="balance-chip">
+        <div class="balance-icon">$</div>
+        <div class="balance-info">
+          <span class="balance-lbl">Fichas Ficticias</span>
+          <span class="balance-val">$800</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== MESA DE BLACKJACK ===== -->
+  <main class="table">
+
+    <!-- 1. ZONA CRUPIER -->
+    <div class="dealer-zone">
+
+      <div class="dealer-badge">
+        <div class="dealer-avatar">
+          <img src="capturas/dealer.png" alt="Dealer Elias" />
+        </div>
+        <span class="dealer-name">ELIAS</span>
+        <span class="dealer-tag">DEALER</span>
+      </div>
+
+      <div class="hand-label">
+        MANO BANCA &nbsp;<strong>11 / 21</strong>
+      </div>
+
+      <!-- Cartas del crupier -->
+      <div class="cards-row">
+        <div class="card black">
+          <span>A♠</span>
+          <span class="card-mid">♠</span>
+          <span class="card-bot">A♠</span>
+        </div>
+        <div class="card-back">🪐</div>
+      </div>
+
+    </div>
+
+    <!-- 2. ZONA DEL JUGADOR (centro) -->
+    <div class="player-zone">
+
+      <!-- Puntaje + píldora de probabilidad -->
+      <div class="player-score-row">
+        <span class="player-score-txt">TU MANO: &nbsp;<strong>20</strong></span>
+        <span class="prob-pill">ALTA PROBABILIDAD</span>
+      </div>
+
+      <!-- Cartas del jugador -->
+      <div class="cards-row">
+        <div class="card red">
+          <span>K♥</span>
+          <span class="card-mid">♥</span>
+          <span class="card-bot">K♥</span>
+        </div>
+        <div class="card red">
+          <span>Q♦</span>
+          <span class="card-mid">♦</span>
+          <span class="card-bot">Q♦</span>
+        </div>
+      </div>
+
+      <!-- VIP Box (chip flotante + monto + posición) -->
+      <div class="vip-box-wrap">
+        <div class="vip-box">
+          <div class="chip-on-top">€1000</div>
+          <div class="vip-lbl">Apuesta Total</div>
+          <div class="vip-amount">€1.500</div>
+          <div class="vip-tag">Su Posición VIP</div>
+        </div>
+
+        <div class="seats-row">
+          <span>LIBRE · ASIENTO 3</span>
+          <span>LIBRE · ASIENTO 5</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 3. BARRA DE TIEMPO DE DECISIÓN -->
+    <div class="timer-section">
+      <div class="timer-labels">
+        <span class="lbl-left">TURNO DE DECISIÓN</span>
+        <span class="lbl-right">08s RESTANTES</span>
+      </div>
+      <div class="timer-track">
+        <div class="timer-fill"></div>
+      </div>
+    </div>
+
+    <!-- 4. FICHAS SELECCIONABLES -->
+    <div class="chips-row">
+      <div class="chip c10">10</div>
+      <div class="chip c50">50</div>
+      <div class="chip c100">100</div>
+      <div class="chip c200">200</div>
+      <div class="chip c500">500</div>
+    </div>
+
+    <!-- 5. BOTONES DE ACCIÓN -->
+    <div class="actions-row">
+      <button class="btn-action btn-deal">Repartir / Apostar</button>
+      <button class="btn-action btn-hit">Pedir Carta</button>
+      <button class="btn-action btn-stand">Plantarse</button>
+      <button class="btn-action btn-double">Doblar</button>
+    </div>
+
+  </main>
+
+</body>
+</html>

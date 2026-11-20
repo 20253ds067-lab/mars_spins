@@ -1,0 +1,377 @@
+/* =====================================================
+   BLACKJACK VIP — CSS
+   Mesa completa: crupier, cartas, chip, barra, botones
+   ===================================================== */
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ===================== NAVBAR ===================== */
+.navbar {
+  height: 60px;
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(8,7,16,0.9);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+.nav-left { display: flex; align-items: center; gap: 18px; }
+
+.btn-back {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.83rem;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background .2s;
+  text-decoration: none;
+}
+.btn-back:hover { background: rgba(255,255,255,0.12); text-decoration: none; }
+
+.nav-right { display: flex; align-items: center; gap: 12px; }
+
+.balance-chip {
+  display: flex; align-items: center; gap: 9px;
+  background: rgba(20,21,34,0.9);
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius-pill);
+  padding: 7px 15px 7px 8px;
+}
+.balance-icon {
+  width: 24px; height: 24px;
+  background: linear-gradient(135deg, var(--gold), #c89020);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.62rem; font-weight: 900; color: #000;
+}
+.balance-info { display: flex; flex-direction: column; }
+.balance-lbl { font-size: 0.56rem; text-transform: uppercase; letter-spacing:.05em; color: var(--text-dim); }
+.balance-val { font-size: 0.95rem; font-weight: 700; color: var(--gold); line-height: 1.1; }
+
+/* ===================== MESA DE JUEGO ===================== */
+.table {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 36px 18px 36px;
+  position: relative;
+  overflow: hidden;
+  background: #100d1e url('../capturas/fondo_blackjack.png') center / cover no-repeat;
+}
+
+/* ---- ZONA CRUPIER ---- */
+.dealer-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Badge: avatar + nombre + rol */
+.dealer-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(10,8,20,0.88);
+  border: 1px solid rgba(245,190,56,0.4);
+  border-radius: var(--radius-pill);
+  padding: 7px 20px 7px 7px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.6);
+}
+
+.dealer-avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: #2e1f50;
+  border: 2px solid var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.dealer-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.dealer-name {
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: .07em;
+  color: var(--text);
+}
+
+.dealer-tag {
+  background: var(--gold);
+  color: #000;
+  font-size: 0.62rem;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 4px;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+/* Puntaje de la banca */
+.hand-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+}
+.hand-label strong { color: var(--text); font-size: 0.85rem; }
+
+/* ---- FILA DE CARTAS ---- */
+.cards-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 115px;
+}
+
+/* Carta visible */
+.card {
+  width: 78px;
+  height: 112px;
+  background: #ffffff;
+  border-radius: 9px;
+  box-shadow: 0 10px 26px rgba(0,0,0,0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 8px 8px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  user-select: none;
+  transition: transform .2s;
+}
+.card:hover { transform: translateY(-5px); }
+.card.red   { color: #c0392b; }
+.card.black { color: #1a1a2e; }
+
+.card-mid   { font-size: 1.9rem; align-self: center; line-height: 1; }
+.card-bot   { align-self: flex-end; transform: rotate(180deg); }
+
+/* Carta boca abajo */
+.card-back {
+  width: 78px; height: 112px;
+  border-radius: 9px;
+  background: linear-gradient(145deg, #1e1b34 0%, #0f0d20 100%);
+  border: 2px solid rgba(245,190,56,0.5);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.6);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.9rem;
+  color: rgba(245,190,56,0.55);
+  user-select: none;
+}
+
+/* ---- ZONA CENTRAL DEL JUGADOR ---- */
+.player-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Puntaje del jugador + píldora de probabilidad */
+.player-score-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.player-score-txt {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+}
+.player-score-txt strong { color: var(--text); font-size: 0.95rem; }
+
+/* Píldora "ALTA PROBABILIDAD" color rosado/lavanda como el mockup */
+.prob-pill {
+  background: rgba(190,100,180,0.25);
+  border: 1px solid rgba(220,150,200,0.3);
+  color: #e8b4e0;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+/* ---- VIP BOX (Chip + Apuesta + Posición) ---- */
+.vip-box-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.vip-box {
+  background: rgba(10,8,20,0.82);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-xl);
+  padding: 10px 36px 16px 36px;
+  text-align: center;
+  min-width: 230px;
+  position: relative;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.7);
+}
+
+/* Ficha flotante sobre el vip-box */
+.chip-on-top {
+  position: absolute;
+  top: -28px; left: 50%;
+  transform: translateX(-50%);
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #f5d060, #c89020 55%, #7a5000 100%);
+  border: 4px dashed rgba(255,255,255,0.7);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.72rem; font-weight: 800; color: #000;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.65);
+}
+
+.vip-lbl { font-size: 0.6rem; text-transform: uppercase; letter-spacing:.06em; color: var(--text-dim); margin-top: 20px; }
+.vip-amount { font-size: 1.55rem; font-weight: 800; color: var(--text); line-height: 1.1; }
+.vip-tag { font-size: 0.62rem; font-weight: 700; color: var(--gold); letter-spacing:.08em; text-transform: uppercase; margin-top: 3px; }
+
+/* Indicadores de asientos */
+.seats-row {
+  display: flex;
+  justify-content: space-between;
+  width: 240px;
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+
+/* ---- BARRA DE TIEMPO DE DECISIÓN ---- */
+.timer-section {
+  width: 100%;
+  max-width: 430px;
+  position: relative;
+  z-index: 2;
+}
+
+.timer-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  margin-bottom: 7px;
+}
+.timer-labels .lbl-left { color: rgba(255,255,255,0.4); }
+.timer-labels .lbl-right { color: var(--gold); }
+
+.timer-track {
+  height: 8px;
+  background: rgba(255,255,255,0.08);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+.timer-fill {
+  height: 100%;
+  width: 68%;
+  background: linear-gradient(to right, var(--gold), #e09010);
+  border-radius: var(--radius-pill);
+}
+
+/* ---- FICHAS SELECCIONABLES ---- */
+.chips-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  z-index: 2;
+}
+
+.chip {
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 0.72rem;
+  cursor: pointer;
+  border: 2.5px dashed rgba(255,255,255,0.3);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  transition: transform .2s;
+  user-select: none;
+}
+.chip:hover { transform: translateY(-5px) scale(1.1); }
+
+.c10  { background: #2563eb; color: #fff; }
+.c50  { background: #dc2626; color: #fff; }
+.c100 { background: #059669; color: #fff; }
+.c200 { background: #7c3aed; color: #fff; }
+.c500 { background: var(--gold); color: #000; }
+
+/* ---- BOTONES DE ACCIÓN ---- */
+.actions-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  position: relative;
+  z-index: 2;
+}
+
+.btn-action {
+  padding: 11px 22px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  transition: transform .15s, background .2s, box-shadow .2s;
+}
+.btn-action:hover { transform: translateY(-2px); }
+
+.btn-deal {
+  background: var(--gold);
+  color: #0c0d13;
+}
+.btn-deal:hover { background: var(--gold-hover); box-shadow: 0 6px 20px rgba(245,190,56,0.3); }
+
+.btn-hit, .btn-stand {
+  background: rgba(255,255,255,0.09);
+  border: 1px solid rgba(255,255,255,0.14);
+  color: var(--text);
+}
+.btn-hit:hover, .btn-stand:hover { background: rgba(255,255,255,0.15); }
+
+.btn-double {
+  background: transparent;
+  border: 1px solid var(--gold-border);
+  color: var(--gold);
+}
+.btn-double:hover { background: var(--gold-dim); }
