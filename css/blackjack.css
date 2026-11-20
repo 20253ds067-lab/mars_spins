@@ -375,3 +375,40 @@ body {
   color: var(--gold);
 }
 .btn-double:hover { background: var(--gold-dim); }
+
+/* ===== ELEMENTOS INTERACTIVOS JS ===== */
+.chip.activa {
+    border-color: var(--gold);
+    transform: translateY(-5px) scale(1.15);
+    box-shadow: 0 0 12px rgba(245,190,56,0.6);
+}
+.chip { cursor: pointer; transition: transform .15s, box-shadow .15s; }
+
+.msg-resultado {
+    text-align: center;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-top: 6px;
+    letter-spacing: 0.03em;
+}
+.msg-resultado.info  { color: #f5be38; background: rgba(245,190,56,0.1); border: 1px solid rgba(245,190,56,0.3); }
+.msg-resultado.warn  { color: #f56262; background: rgba(245,98,98,0.1);  border: 1px solid rgba(245,98,98,0.3);  }
+
+#pila-info {
+    background: rgba(0,0,0,0.5);
+    border: 1px solid rgba(245,190,56,0.2);
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 0.75rem;
+    color: #9e9eb2;
+    max-width: 420px;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.btn-action:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
